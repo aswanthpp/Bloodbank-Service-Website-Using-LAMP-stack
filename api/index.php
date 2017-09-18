@@ -8,9 +8,22 @@ if (!isset($_SESSION)) {
 \Slim\Slim::registerAutoloader();
 $app = new \Slim\Slim();
 
-$app->get('/sampleAPI', function() use($app) {
+$app->get('/allBloodGroup', function() use($app) {
+   
     $db = new DbHandler();
-    $data = array("status"=>'Working Fine');
+    $data = $db->allBloodGroup();
+    $app->response()->header('Content-Type', 'application/json');
+    echo json_encode($data);
+});
+$app->get('/allState', function() use($app) {
+    $db = new DbHandler();
+    $data = $db->allState();
+    $app->response()->header('Content-Type', 'application/json');
+    echo json_encode($data);
+});
+$app->get('/allDistrict/:sid', function($sid) use($app) {
+    $db = new DbHandler();
+    $data = $db->allDistrict($sid);
     $app->response()->header('Content-Type', 'application/json');
     echo json_encode($data);
 });

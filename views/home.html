@@ -1,3 +1,36 @@
 <div ng-controller="homeController">
-inside ng
+    <div class="col-lg-12">
+        <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+            <select  style="width: 200px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                     ng-options="users.bid as users.blood_group for users in bloodGroup"   ng-model="bloodGroupId">
+                <option value="0" >Assigned</option>
+            </select> 
+        </label>
+    </div>
+    <div  class="col-lg-12">
+        <div class="col-lg-6">
+            <input type="username"  class="form-control" id="name" placeholder="Patient Name" name="uname" ng-model="uname">
+        </div>
+        <div class="col-lg-6">
+            <input type="username"  class="form-control" id="place" placeholder="Patient Name" name="uname" ng-model="uname">
+        </div>
+    </div>
+    <div>
+    <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+            <select  style="width: 200px;" class="input-md required" id="state" name="state"
+                     ng-options="users.state_id as users.name for users in state" ng-change="findDistrict(stateId)"  ng-model="stateId">
+                <option value="0" >Assigned</option>
+            </select> 
+        </label>
+    </div>
+    <div>
+    <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+            <select  style="width: 200px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                     ng-options="users.district_id as users.district_name for users in district"   ng-model="districtId">
+                <option value="0" >Assigned</option>
+            </select> 
+        </label>
+    </div>
+     <button type="reset" class="btn btn-default" ng-click="searchBlood()">Search</button><br><br>
 </div>
+    

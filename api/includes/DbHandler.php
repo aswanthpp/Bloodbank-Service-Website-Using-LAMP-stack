@@ -16,4 +16,18 @@ class DbHandler {
                         ->where("company_id = ? ", $cid)
                         ->and("user_id = ? ", $uid);
     }
+    public function allBloodGroup() {
+        return $this->db->tbl_blood_group();
+                
+    }
+    public function allState() {
+        return $this->db->tbl_state();
+                
+    }
+     public function allDistrict($sid) {
+        return $this->db->tbl_district()
+                ->where("state_id= ? ", $sid);
+                
+    }
+    
 }
