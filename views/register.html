@@ -1,3 +1,114 @@
-<div ng-controller="homeController">
-inside register
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  </script>
+<div ng-controller="registerController">
+<div class="col col-lg-12">
+	<div class="col-lg-3">
+	</div>
+	<div class="col-lg-3">
+	<input type="radio" name="type" checked> Donor
+	</div>
+	<div class="col-lg-3"> 
+  	<input type="radio" name="type" > Oraganization
+	</div>
+	<div class="col-lg-3">
+	</div>
+</div>
+<div class="col col-lg-12" style="padding:60px;">
+	<div class="col-lg-4" >
+		Name :<br> 
+		<input type="text" name="name" >
+	</div>
+	<div class="col-lg-4" >
+  		<input type="radio" name="gender" value="male" > Male
+  		<input type="radio" name="gender" value="female"> Female
+  		<input type="radio" name="gender" value="other"> Other
+	</div>
+	<div  class="col-lg-4" >
+  		Birth Date  <br>
+		<input type="text" id="datepicker">
+	</div>
+</div>
+<div class="col col-lg-12" style="padding:30px;">
+
+		<div class="col-lg-3">
+			Blood Group <br>
+        		<label class="select " style="width: 200px;float: left;margin-right: 4px;">
+            			<select  style="width: 200px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                     ng-options="users.bid as users.blood_group for users in bloodGroup"   ng-model="bloodGroupId">
+                		<option value="0" >Assigned</option>
+            		</select> 
+       		 	</label>
+    		</div>
+		<div class="col-lg-3">
+			Last Donated Date  <br>		
+			<input type="text" id="datepicker">
+		</div>
+
+	
+		<div class="col-lg-3">
+			Height <br>		
+			<input type="text" name="height" >
+		</div>
+		<div class="col-lg-3">
+			Weight <br>
+			<input type="text" name="weight" >
+		</div>
+	
+</div>
+<div class="col col-lg-12" style="padding:30px;">
+	<div class="col col-lg-12">
+		<div style="padding:10px;margin:10px">Location</div> 
+		<div class="col-lg-3">
+			<input type="text" name="city" value="City Name">
+		</div>
+ 		<div class="col-lg-3">
+    			<label class="select " style="width: 200px;float: left;margin-right: 4px;">
+            			<select  style="width: 200px;" class="input-md required" id="state" name="state"
+                     ng-options="users.state_id as users.name for users in state" ng-change="findDistrict(stateId)"  ng-model="stateId">
+                	<option value="0" >Assigned</option>
+            			</select> 
+        		</label>
+    		</div>
+    		<div class="col-lg-3">
+    			<label class="select " style="width: 200px;float: left;margin-right: 4px;">
+            			<select  style="width: 200px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                     ng-options="users.district_id as users.district_name for users in district"   ng-model="districtId">
+                	<option value="0" >Assigned</option>
+            		</select> 
+        		</label>
+    		</div>
+
+	</div>
+
+	<div class="col col-lg-12" >
+
+		<div class="col-lg-6"> 
+			Mobile Number <br>
+			<input type="text" name="mobile" value="">
+		</div>
+		<div class="col-lg-6">	
+			E mail <br>
+			<input type="text" name="mail" value=""><br>
+		</div>
+
+	</div>
+</div>
+<div>
+<button style="margin-left:300px"> Register</button>
+</div>
+
 </div>
