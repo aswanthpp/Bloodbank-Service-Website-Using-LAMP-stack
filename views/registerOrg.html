@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="col col-lg-12" style="padding:30px;">
+	<div class="col col-lg-12">
+		<div style="padding:10px;margin:10px">Location</div> 
+		<div class="col-lg-3">
+			<input type="text" name="city" value="City Name">
+		</div>
+ 		<div class="col-lg-3">
+    			<label class="select " style="width: 200px;float: left;margin-right: 4px;">
+            			<select  style="width: 200px;" class="input-md required" id="state" name="state"
+                     ng-options="users.state_id as users.name for users in state" ng-change="findDistrict(stateId)"  ng-model="stateId">
+                	<option value="0" >Assigned</option>
+            			</select> 
+        		</label>
+    		</div>
+    		<div class="col-lg-3">
+    			<label class="select " style="width: 200px;float: left;margin-right: 4px;">
+            			<select  style="width: 200px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                     ng-options="users.district_id as users.district_name for users in district"   ng-model="districtId">
+                	<option value="0" >Assigned</option>
+            		</select> 
+        		</label>
+    		</div>
+
+	</div>
+
+	<div class="col col-lg-12" >
+
+		<div class="col-lg-6"> 
+			Mobile Number <br>
+			<input type="text" name="mobile" value="">
+		</div>
+		<div class="col-lg-6">	
+			E mail <br>
+			<input type="text" name="mail" value=""><br>
+		</div>
+
+	</div>
+</div>
+<div class="col col-lg-12">
+	<table >
+		<tr>
+    			<th>Blood Group</th>
+    			<th>Available Quantinty(ml)</th>
+    			
+  		</tr>
+		<tr style="padding:5px;">
+    			<td>A positive</td>
+    			<td></td>
+		</tr>
+		<tr style="padding:5px;">
+    			<td>A negative</td>
+    			<td></td>
+		</tr>
+		<tr style="padding:5px;">
+    			<td>B positive</td>
+    			<td></td>
+		</tr>
+		<tr style="padding:5px;">
+    			<td>B negative</td>
+    			<td></td>
+		</tr>
+		<tr style="padding:5px;">
+    			<td>AB positive</td>
+    			<td></td>
+		</tr>
+		<tr style="padding:5px;">
+			<td>AB negative</td>
+    			<td></td>
+		</tr>
+		<tr style="padding:5px;">
+			<td>O positive</td>
+    			<td></td>
+		</tr>
+		<tr style="padding:5px;">
+			<td>O negative</td>
+    			<td></td>
+		</tr>
+		
+	</table>
+</div>
+
+
+<div>
+<button style="margin-left:300px"> Register</button>
+</div>
+
