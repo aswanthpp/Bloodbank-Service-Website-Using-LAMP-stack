@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--<link rel="stylesheet" href="./css/bootstrap.min.css">
+<script src="./js/jquery-2.0.2.min.js"></script>
+<script src="./js/bootstrap/bootstrap.min.js"></script>-->
+<style>
+    .redborder { border : 1px solid red !important;}
+    body{
+       // background-image: url("./img/cover3.jpg");
+        background-color: #A9A9A9;
+    }
+</style>
+<div ng-controller="requestStatusController" >
+    <div class="row">
+        <div class="col-lg-12" style="font-size: 250%;padding-top: 10px;text-align:center;color:">Blood Request History</div>
+        <div class="col col-lg-12" style="padding: 10px;margin: 10px;">
+            <div class="col-lg-12" style="padding: 3px;;font-size: 150%">Search By</div>
+            <div class="col-lg-4">
+                Blood Group<br>
+                <label class="select " style="width: 200px;float: left;margin-right: 4px; ">
+                    <select  style="width: 200px;height:35px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                             ng-options="users.bid as users.blood_group for users in bloodGroup"    ng-model="bloodGroupId">
+                        <option value="0" >Assigned</option>
+                    </select> 
+                </label>
+            </div>
+            <div class="col-lg-4">
+                State  <br>
+                <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+                    <select  style="width: 200px;height: 35px" class="input-md required" id="state" name="state"
+                             ng-options="users.state_id as users.name for users in state" ng-change="findDistrict(stateId)"  ng-model="stateId">
+                        <option value="0" >Assigned</option>
+                    </select> 
+                </label>
+            </div>
+            <div class="col-lg-4">
+                District<br>
+                <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+                    <select  style="width: 200px;height:35px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                             ng-options="users.district_id as users.district_name for users in district" s  ng-model="districtId">
+                        <option value="0" >Assigned</option>
+                    </select> 
+                </label>
+            </div>
+        </div>
+        <div class="col-lg-12" >
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3">
+                <button style="margin-left:50%" class="btn btn-d" ng-click="search()"> Search</button>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+
+        <div class="col col-lg-12" style="padding:20px;margin:20px;">
+            <div class="col-lg-10" >
+                <table class="table table-bordered table-striped table-condensed table-hover smart-form" id="table-sparkline" >
+                    <thead style="background-color: #e2583f">
+                        <tr style="background-color: #F6F6F6 !important;">
+                            <!--<th style="width:50px"> Sl No.</th>-->
+                            <th style="text-align: center;width:300px;" >Patient</th>
+                            <th style="width: 300px;">Hospital</th>
+                            <th  style="width: 80px">Blood Group</th>
+                            <th style="width: 50px;">District</th>
+                            <th  style="width: 150px">State</th>
+
+                        </tr>
+                    </thead>
+                    <tbody style="background-color: white;" id="tbody-sparkline" >
+                        <tr ng-repeat="donor in Result" style="height:30px;">
+                            <!--                            <td>1
+                                                        </td >-->
+                            <td>{{donor.patient_name}} </td>
+                            <td >{{donor.hospital_name}}</td>
+                            <td>{{donor.blood_group}}</td>
+                            <td>{{donor.district}}</td>
+                            <td>{{donor.state}}</td>
+                            <!--<td> <button type="reset" class="btn btn-d"  style="background-color: #e2583f"ng-click="sendBank()">Send</button></td>-->
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>

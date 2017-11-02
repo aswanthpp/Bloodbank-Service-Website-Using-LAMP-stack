@@ -1,114 +1,264 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script>
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-  </script>
-<div ng-controller="registerController">
-<div class="col col-lg-12">
-	<div class="col-lg-3">
-	</div>
-	<div class="col-lg-3">
-	<input type="radio" name="type" checked> Donor
-	</div>
-	<div class="col-lg-3"> 
-  	<input type="radio" name="type" > Oraganization
-	</div>
-	<div class="col-lg-3">
-	</div>
-</div>
-<div class="col col-lg-12" style="padding:60px;">
-	<div class="col-lg-4" >
-		Name :<br> 
-		<input type="text" name="name" >
-	</div>
-	<div class="col-lg-4" >
-  		<input type="radio" name="gender" value="male" > Male
-  		<input type="radio" name="gender" value="female"> Female
-  		<input type="radio" name="gender" value="other"> Other
-	</div>
-	<div  class="col-lg-4" >
-  		Birth Date  <br>
-		<input type="text" id="datepicker">
-	</div>
-</div>
-<div class="col col-lg-12" style="padding:30px;">
 
-		<div class="col-lg-3">
-			Blood Group <br>
-        		<label class="select " style="width: 200px;float: left;margin-right: 4px;">
-            			<select  style="width: 200px;" class="input-md required" id="bloodGroup" name="bloodGroup"
-                     ng-options="users.bid as users.blood_group for users in bloodGroup"   ng-model="bloodGroupId">
-                		<option value="0" >Assigned</option>
-            		</select> 
-       		 	</label>
-    		</div>
-		<div class="col-lg-3">
-			Last Donated Date  <br>		
-			<input type="text" id="datepicker">
-		</div>
+<!--<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="../js/jquery-2.0.2.min.js"></script>
+<script src="../js/bootsrap/bootstrap.min.js"></script>-->
+<style>
+    .redborder { border : 1px solid red !important;}
+    body{
+      
+        // background-image: url("../img/cover.png");
+    }
+</style>
+<div ng-controller="registerDonorController">
+    <div class="row" id="logInDonor">
+        <div class="col col-lg-12" style="background-color: #d6d4d4;font-size: 120%">
+            <button class="w3-button w3-hover-blue"  ng-click="signin()"   >Sign In</button>
+            <button class="w3-button w3-hover-blue"  ng-click="signup()"> Sign Up</button>
+        </div>
+        <div ng-show="loginForm"  class="col col-lg-12" style="padding: 30px;" >
+            <div class="col col-lg-12" style="padding:5px;margin:10px;font-size: 200%; text-align: center">Blood Donor Log In </div>
+            <div class="col-lg-12" style="padding:5px;margin:10px;font-size: 150%;">Sign In </div>
+            <div  class="col-lg-6">
+                Username 
+                <label style="color:red">*</label>
+                <input type="username"  class="form-control required" name="uname" placeholder="User Name" ng-model="lusername" style="width:50%">
+                <label style="color:red" ng-show="elusername">Invalid Username</label>
+            </div>
+            <div  class="col-lg-6">
+                Password
+                <label style="color:red">*</label>
+                <input type="password"  class="form-control required" name="uname" placeholder="Password" ng-model="lpassword" style="width:50%">
+                <label style="color:red" ng-show="elpassword">Invalid Password</label>
+            </div>
+            <div class="col col-lg-12" style="padding-top: 2px;">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-3" style="text-align: center;padding-top: 5px;">
+                    <button  type="reset" class="btn btn-default" ng-click="donorLogin()">Log In</button>
+                    <button  ng-show="inLogin" type="reset" class="btn btn-default" ng-click="logOut()">Log Out</button>
+                </div>
+                <div class="col-lg-3">
 
-	
-		<div class="col-lg-3">
-			Height <br>		
-			<input type="text" name="height" >
-		</div>
-		<div class="col-lg-3">
-			Weight <br>
-			<input type="text" name="weight" >
-		</div>
-	
-</div>
-<div class="col col-lg-12" style="padding:30px;">
-	<div class="col col-lg-12">
-		<div style="padding:10px;margin:10px">Location</div> 
-		<div class="col-lg-3">
-			<input type="text" name="city" value="City Name">
-		</div>
- 		<div class="col-lg-3">
-    			<label class="select " style="width: 200px;float: left;margin-right: 4px;">
-            			<select  style="width: 200px;" class="input-md required" id="state" name="state"
-                     ng-options="users.state_id as users.name for users in state" ng-change="findDistrict(stateId)"  ng-model="stateId">
-                	<option value="0" >Assigned</option>
-            			</select> 
-        		</label>
-    		</div>
-    		<div class="col-lg-3">
-    			<label class="select " style="width: 200px;float: left;margin-right: 4px;">
-            			<select  style="width: 200px;" class="input-md required" id="bloodGroup" name="bloodGroup"
-                     ng-options="users.district_id as users.district_name for users in district"   ng-model="districtId">
-                	<option value="0" >Assigned</option>
-            		</select> 
-        		</label>
-    		</div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="updateForm" style="padding:10px;margin:10px;">
+            <div class="col-lg-12">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-8" style="margin: 10px;padding: 10px;font-size: 120%">
+                    Hi {{logInDetails[0].username}} , Your Details
+                    <div class="col-lg-12" style="padding:5px;background-color: #8bed9d">
+                        <div class="col-lg-4">
+                            Name : {{logInDetails[0].name}}
+                        </div>
+                        <div class="col-lg-4">
+                            Date Of Birth : {{logInDetails[0].dob}}
+                        </div>
+                        <div class="col-lg-3">
+                            Gender : {{logInDetails[0].gender}}
+                        </div> 
+                    </div>
+                    <div class="col-lg-12" style="padding:5px;background-color: #8bed9d">
+                        <div class="col-lg-4">
+                            Blood Group : {{logInDetails[0].blood_group}} 
+                        </div>
+                        <div class="col-lg-4">
+                            Last Donated Date : {{logInDetails[0].last_donated_date}} 
+                        </div>
+                        <div class="col-lg-2">
+                            Height : {{logInDetails[0].height}}
+                        </div>
+                        <div class="col-lg-2">
+                            Weight : {{logInDetails[0].weight}}
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="padding:5px;background-color: wheat">
+                        <div class="col-lg-12">Location</div>
+                        <div class="col-lg-3">
+                            City :  {{logInDetails[0].city}}
+                        </div>
+                        <div class="col-lg-3">
+                            District : {{logInDetails[0].district}}
+                        </div>
+                        <div class="col-lg-3">
+                            State : {{logInDetails[0].state}}
+                        </div>
+                    </div>
+                    <div class="col-lg-12" style="padding:5px;background-color: wheat">
+                        <div class="col-lg-12">Contact Details </div>
+                        <div class="col-lg-4">
+                            Mobile : {{logInDetails[0].mobile}}
+                        </div>
+                        <div class="col-lg-4">
+                            Email : {{logInDetails[0].email}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <div class="col-lg-12" id='updateDonor'>
+                <div class="col-lg-12" style="font-size: 200%">Update Details</div>
+                <div class="col-lg-12">
+                    <div class="col-lg-12" style="font-size: 150%"> Location Details</div>
+                    <div class="col col-lg-12" style="padding: 10px;margin: 10px;">
+                        <div class="col-lg-3">
+                            City  
+                            <input class="form-control required" type="text" name="city" placeholder="City" ng-model="ucity">
+                        </div>
+                        <div class="col-lg-3">
+                            State   <br>
+                            <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+                                <select  style="width: 300px;height:35px;" class="input-md required" id="state" name="state"
+                                         ng-options="users.state_id as users.name for users in state" ng-change="findDistrict(ustateId)"  ng-model="ustateId">
+                                    <option value="0" >Assigned</option>
+                                </select> 
+                            </label>
+                        </div>
+                        <div class="col-lg-3">
+                            District   <br>
+                            <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+                                <select  style="width: 300px;height:35px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                                         ng-options="users.district_id as users.district_name for users in district"   ng-model="udistrictId">
+                                    <option value="0" >Assigned</option>
+                                </select> 
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-12" style="font-size: 150%"> Contact Details Details</div>
+                    <div class="col col-lg-12" style="padding: 10px;margin: 10px">
+                        <div class="col-lg-6"> 
+                            Mobile  
+                            <input class="form-control required" ng-blur="lerrmobile(umobile)" type="text" name="mobile" placeholder="Mobile Number" style="width: 70%" ng-model="umobile">
+                            <label style="color:red" ng-show="lemobile">Invalid Mobile</label>
+                        </div>
+                        <div class="col-lg-6">	
+                            Email  
+                            <input class="form-control required" ng-blur="lerremail(uemail)" type="text" name="mail" placeholder="e-mail" ng-model="uemail"><br>
+                            <label style="color:red" ng-show="leemail">Invalid Email</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3" style="text-align: center">
+                        <button type="reset" class="btn btn-default" ng-click="updateDonor()">Update</button>
+                    </div>
+                    <div class="col-lg-3"></div>
+                </div>
+            </div>
+        </div>
+        <div id="registerDonor" ng-show="registerForm">
+            <div class="col col-lg-12" style="padding:30px;">
+                <div class="col col-lg-12" style="padding:5px;margin:10px;font-size: 200%; text-align: center">Register Blood Donor </div>
+                <div class="col-lg-12" style="padding:5px;margin:10px;font-size: 150%;">Sign Up </div>
+                <div class="col-lg-12" style="padding: 5px;margin: 5px;" >
 
-	</div>
-
-	<div class="col col-lg-12" >
-
-		<div class="col-lg-6"> 
-			Mobile Number <br>
-			<input type="text" name="mobile" value="">
-		</div>
-		<div class="col-lg-6">	
-			E mail <br>
-			<input type="text" name="mail" value=""><br>
-		</div>
-
-	</div>
-</div>
-<div>
-<button style="margin-left:300px"> Register</button>
-</div>
-
+                    <div class="col-lg-6">
+                        Username 
+                        <label style="color:red">*</label>
+                        <input ng-blur="errusername()" type="username"  class="form-control required" name="uname" placeholder="User Name" ng-model="username" style="width:50%">
+                        <label style="color:red" ng-show="eusername">Username Exists</label>
+                    </div>
+                    <div class="col-lg-6">
+                        Password
+                        <label style="color:red">*</label>
+                        <input type="password"  class="form-control required" name="uname" placeholder="Password" ng-model="password" style="width:50%">
+                        <label style="color:red" ng-show="epassword">Invalid Password</label>
+                    </div>
+                </div>
+                <div class="col-lg-12" style="padding: 5px;margin: 5px;">
+                    <div class="col-lg-4" >
+                        Name   <label style="color:red">*</label>
+                        <input type="text" class="form-control required" name="name" placeholder="Donor Name" ng-model="name">
+                        <label style="color:red" ng-show="ename">Invalid Name</label>
+                    </div>
+                    <div class="col-lg-2" >
+                        Gender   <label style="color:red">*</label><br>
+                        <label class="select " style="width: 200px;float: left;margin-right: 4px; ">
+                            <select  style="width: 200px;height:35px;" class="input-md required" id="genderId" name="genderId"
+                                     ng-options="users.gid as users.gender_name for users in Gender"    ng-model="genderId">
+                                <option value="0" >Assigned</option>
+                            </select> 
+                        </label>
+                    </div>
+                    <div  class="col-lg-4" >
+                        Date of  Birth  <label style="color:red">*</label><br>
+                        <input class="form-control required" ng-blur="errdob()" type="date" id="dob" placeholder="DOB [dd/mm/yyyy]" ng-model="dob" >
+                        <label style="color:red" ng-show="edob">Invalid DOB</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-lg-12" style="padding:30px;">
+                <div class="col-lg-3">
+                    Blood Group  <label style="color:red">*</label><br>
+                    <label class="select " style="width: 200px;float: left;margin-right: 4px; ">
+                        <select  style="width: 200px;height:35px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                                 ng-options="users.bid as users.blood_group for users in bloodGroup"    ng-model="bloodGroupId">
+                            <option value="0" >Assigned</option>
+                        </select> 
+                    </label>
+                </div>
+                <div class="col-lg-3">
+                    Last Donated Date   <label style="color:red">*</label>
+                    <input type="date" id="ldate" class="form-control required" placeholder="Last Donated[dd/mm/yyyy]" ng-model="lastDate" >
+                </div>
+                <div class="col-lg-3">
+                    Height  <label style="color:red">*</label>
+                    <input class="form-control required" ng-blur="errheight(height)" type="text" name="height" placeholder="Height in CM" ng-model="height">
+                    <label style="color:red" ng-show="eheight">Invalid Height</label>
+                </div>
+                <div class="col-lg-3">
+                    Weight   <label style="color:red">*</label>
+                    <input class="form-control required"  ng-blur="errweight(weight)" type="text" name="weight" placeholder="Weight in KG" ng-model="weight" >
+                    <label style="color:red" ng-show="eweight">Invalid Weight</label>
+                </div>
+            </div>
+            <div class="col col-lg-12" style="padding:30px;">
+                <div class="col col-lg-12" style="padding: 10px;margin: 10px;">
+                    <div class="col-lg-3">
+                        City   <label style="color:red">*</label>
+                        <input class="form-control required" type="text" name="city" placeholder="City" ng-model="city">
+                    </div>
+                    <div class="col-lg-3">
+                        State   <label style="color:red">*</label><br>
+                        <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+                            <select  style="width: 300px;height:35px;" class="input-md required" id="state" name="state"
+                                     ng-options="users.state_id as users.name for users in state" ng-change="findDistrict(stateId)"  ng-model="stateId">
+                                <option value="0" >Assigned</option>
+                            </select> 
+                        </label>
+                    </div>
+                    <div class="col-lg-3">
+                        District   <label style="color:red">*</label><br>
+                        <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+                            <select  style="width: 300px;height:35px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                                     ng-options="users.district_id as users.district_name for users in district"   ng-model="districtId">
+                                <option value="0" >Assigned</option>
+                            </select> 
+                        </label>
+                    </div>
+                </div>
+                <div class="col col-lg-12" style="padding: 10px;margin: 10px;">
+                    <div class="col-lg-6"> 
+                        Mobile   <label style="color:red">*</label>
+                        <input class="form-control required" ng-blur="errmobile(mobile)" type="text" name="mobile" placeholder="Mobile Number" style="width: 70%" ng-model="mobile">
+                        <label style="color:red" ng-show="emobile">Invalid Mobile</label>
+                    </div>
+                    <div class="col-lg-6">	
+                        Email   <label style="color:red">*</label>
+                        <input class="form-control required" ng-blur="erremail(email)" type="text" name="mail" placeholder="e-mail" ng-model="email"><br>
+                        <label style="color:red" ng-show="eemail">Invalid Email</label>
+                    </div>
+                </div>
+                <div style="padding: 5px;">
+                    <button style="margin-left:50%" class="btn btn-d" ng-click="register()"> Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

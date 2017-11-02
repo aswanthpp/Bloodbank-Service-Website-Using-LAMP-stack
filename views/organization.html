@@ -1,0 +1,305 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--<link rel="stylesheet" href="../css/bootstrap.min.css">
+<script src="../js/jquery-2.0.2.min.js"></script>
+<script src="../js/bootsrap/bootstrap.min.js"></script>-->
+<style>
+    .redborder { border : 1px solid red !important;}
+    body{
+        //  background-image: url("../img/cover.png");
+    }
+</style>
+<div ng-controller="organisationController">
+    <div class="row" id="registerDonor">
+        <div class="col col-lg-12" style="background-color: #d6d4d4;font-size: 120%">
+            <button class="w3-button w3-hover-blue"  ng-click="signin()"  >Sign In</button>
+            <button class="w3-button w3-hover-blue"  ng-click="signup()"> Sign Up</button>
+        </div>
+
+        <div ng-show="loginForm"  class="col col-lg-12" style="padding: 30px;" >
+            <div class="col col-lg-12" style="padding:5px;margin:10px;font-size: 200%; text-align: center">Organization Log In </div>
+            <div class="col-lg-12" style="padding:5px;margin:10px;font-size: 150%;">Sign In </div>
+            <div  class="col-lg-6">
+                Username 
+                <label style="color:red">*</label>
+                <input type="username"  class="form-control required" name="uname" placeholder="User Name" ng-model="lusername" style="width:50%">
+                <label style="color:red" ng-show="elusername">Invalid Username</label>
+            </div>
+            <div  class="col-lg-6">
+                Password
+                <label style="color:red">*</label>
+                <input type="password"  class="form-control required" name="uname" placeholder="Password" ng-model="lpassword" style="width:50%">
+                <label style="color:red" ng-show="elpassword">Invalid Password</label>
+            </div>
+            <div class="col col-lg-12" style="padding-top: 2px;">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-3" style="text-align: center;padding-top: 5px;">
+                    <button  type="reset" class="btn btn-default" ng-click="bankLogin()">Log In</button>
+                    <button  ng-show="inLogin" type="reset" class="btn btn-default" ng-click="logOut()">Log Out</button>
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+            </div>
+            <div ng-show="updateForm" style="padding:10px;margin:10px;">
+                <div class="col-lg-12">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-8" style="margin: 10px;padding: 10px;font-size: 120%">
+                        Hi {{logInDetails[0].username}} , Your Details
+                        <div class="col-lg-12" style="padding:5px;background-color: #8bed9d">
+                            <div class="col-lg-6">
+                                Organization  Name : {{logInDetails[0].org_name}}
+                            </div>
+                            <div class="col-lg-6">
+                                Manager Name: {{logInDetails[0].manager_name}}
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="padding:5px;background-color: #8bed9d">
+                            <div class="col-lg-12" style="padding:3px;background-color: #bc4c32;color: white;font-size: 120%">Blood Amount(ml)</div>
+                            <div class="col-lg-12" style="padding:3px;background-color: #bc4c32;color: white;">
+                                <div class="col-lg-3">A Positive : {{logInDetails[0].A_positive}} </div>
+                                <div class="col-lg-3">A Negative : {{logInDetails[0].A_negative}}</div>
+                                <div class="col-lg-3">B Positive : {{logInDetails[0].B_positive}}</div>
+                                <div class="col-lg-3">B Negative : {{logInDetails[0].B_negative}}</div>
+                            </div>
+                            <div class="col-lg-12" style="padding:3px;background-color: #bc4c32;color: white;">
+                                <div class="col-lg-3">AB Positive : {{logInDetails[0].AB_positive}}</div>
+                                <div class="col-lg-3">AB Negative {{logInDetails[0].AB_negative}}</div>
+                                <div class="col-lg-3">O Positive : {{logInDetails[0].O_positive}}</div>
+                                <div class="col-lg-3">O Negative {{logInDetails[0].O_negative}}</div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="padding:5px;background-color: wheat">
+                            <div class="col-lg-12">Location</div>
+                            <div class="col-lg-3">
+                                City :  {{logInDetails[0].city}}
+                            </div>
+                            <div class="col-lg-3">
+                                District : {{logInDetails[0].district}}
+                            </div>
+                            <div class="col-lg-3">
+                                State : {{logInDetails[0].state}}
+                            </div>
+                        </div>
+                        <div class="col-lg-12" style="padding:5px;background-color: wheat">
+                            <div class="col-lg-12">Contact Details </div>
+                            <div class="col-lg-4">
+                                Mobile : {{logInDetails[0].mobile}}
+                            </div>
+                            <div class="col-lg-4">
+                                Email : {{logInDetails[0].email}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+                <div class="col-lg-12" id='updateDonor'>
+                    <div class="col-lg-12" style="font-size: 200%">Update Details</div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-12" style="font-size: 150%"> Blood Quantity In Stock</div>
+                        <div class="col col-lg-12" style="padding:5px;margin: 5px;">
+                            <div class="col-lg-12" style="padding: 5px;" >
+                                <div class="col-lg-3" >
+                                    A positive 
+                                    <input type="text" class="form-control required"  ng-blur="lerrapos()" name="apos" placeholder="Amount in ml" ng-model="lapos">
+                                    <label style="color:red" ng-show="leapos">Invalid Value</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    A negative 
+                                    <input type="text" class="form-control required"  ng-blur="lerranev()" name="anev" placeholder="Amount in ml" ng-model="lanev">
+                                    <label style="color:red" ng-show="leanev">Invalid Value</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    B positive 
+                                    <input type="text" class="form-control required"  ng-blur="lerrbpos()" name="apos" placeholder="Amount in ml" ng-model="lbpos">
+                                    <label style="color:red" ng-show="lebpos">Invalid Value</label>
+                                </div>
+                                <div class="col-lg-3">
+                                    B negative <label style="color:red">*</label>
+                                    <input type="text" class="form-control required"  ng-blur="lerrbnev()" name="apos" placeholder="Amount in ml" ng-model="lbnev">
+                                    <label style="color:red" ng-show="lebnev">Invalid Value</label>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-12"  style="padding: 5px;">
+                                <div class="col-lg-3">
+                                    AB positive 
+                                    <input type="text" class="form-control required"  ng-blur="lerrabpos()" name="apos" placeholder="Amount in ml" ng-model="labpos">
+                                    <label style="color:red" ng-show="leabpos">Invalid Value</label>
+
+                                </div>
+                                <div class="col-lg-3">
+                                    AB negative 
+                                    <input type="text" class="form-control required"  ng-blur="lerrabnev()" name="apos" placeholder="Amount in ml" ng-model="labnev">
+                                    <label style="color:red" ng-show="leabnev">Invalid Value</label>
+
+                                </div>
+                                <div class="col-lg-3">
+                                    O positive 
+                                    <input type="text" class="form-control required"  ng-blur="lerropos()" name="apos" placeholder="Amount in ml" ng-model="lopos">
+                                    <label style="color:red" ng-show="leopos">Invalid Value</label>
+
+                                </div>
+                                <div class="col-lg-3">
+                                    O negative 
+                                    <input type="text" class="form-control required"  ng-blur="lerronev()" name="apos" placeholder="Amount in ml" ng-model="lonev">
+                                    <label style="color:red" ng-show="leonev">Invalid Value</label>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-12" style="font-size: 150%"> Contact Details Details</div>
+                        <div class="col col-lg-12" style="padding: 10px;margin: 10px">
+                            <div class="col-lg-6"> 
+                                Mobile   
+                                <input class="form-control required" ng-blur="lerrmobile(umobile)" type="text" name="mobile" placeholder="Mobile Number" style="width: 70%" ng-model="umobile">
+                                <label style="color:red" ng-show="lemobile">Invalid Mobile</label>
+                            </div>
+                            <div class="col-lg-6">	
+                                Email   
+                                <input class="form-control required" ng-blur="lerremail(uemail)" type="text" name="mail" placeholder="e-mail" ng-model="uemail"><br>
+                                <label style="color:red" ng-show="leemail">Invalid Email</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-3" style="text-align: center">
+                            <button type="reset" class="btn btn-default" ng-click="updateBank()">Update</button>
+                        </div>
+                        <div class="col-lg-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col col-lg-12" style="padding:30px;" ng-show="registerForm" id="registerOrganization">
+            <div class="col col-lg-12" style="padding:5px;margin:10px;font-size: 200%; text-align: center">Register Organization </div>
+            <div class="col-lg-12" style="padding:5px;margin:10px;font-size: 150%;">Sign Up </div>
+            <div class="col-lg-12" style="padding: 5px;margin: 5px;" >
+                <div class="col-lg-6">
+                    Username 
+                    <label style="color:red">*</label>
+                    <input ng-blur="errusername()" type="username"  class="form-control required" name="uname" placeholder="User Name" ng-model="username" style="width:50%">
+                    <label style="color:red" ng-show="eusername">Username Exists</label>
+                </div>
+                <div class="col-lg-6">
+                    Password
+                    <label style="color:red">*</label>
+                    <input type="password"  class="form-control required" name="uname" placeholder="Password" ng-model="password" style="width:50%">
+                    <label style="color:red" ng-show="epassword">Invalid Password</label>
+                </div>
+            </div>
+            <div class="col-lg-12" style="padding: 5px;margin: 5px;">
+                <div class="col-lg-6" >
+                    Organization Name  <label style="color:red">*</label>
+                    <input type="text" style="width: 80%" class="form-control required" name="name" placeholder="Oraganization Name" ng-model="orgname">
+                </div>
+
+                <div class="col-lg-6" >
+                    Manager Name  <label style="color:red">*</label>
+                    <input type="text" style="width: 80%"  class="form-control required" name="name" placeholder="Mangaer Name" ng-model="mangername">
+                </div>
+            </div>
+            <div class="col col-lg-12" style="padding:5px;margin: 5px;">
+                <div class="col-lg-12" style="padding: 5px;" >
+                    <div class="col-lg-3" >
+                        A positive <label style="color:red">*</label>
+                        <input type="text" class="form-control required"  ng-blur="errapos()" name="apos" placeholder="Amount in ml" ng-model="apos">
+                        <label style="color:red" ng-show="eapos">Invalid Value</label>
+                    </div>
+                    <div class="col-lg-3">
+                        A negative <label style="color:red">*</label>
+                        <input type="text" class="form-control required"  ng-blur="erranev()" name="anev" placeholder="Amount in ml" ng-model="anev">
+                        <label style="color:red" ng-show="eanev">Invalid Value</label>
+                    </div>
+                    <div class="col-lg-3">
+                        B positive <label style="color:red">*</label>
+                        <input type="text" class="form-control required"  ng-blur="errbpos()" name="apos" placeholder="Amount in ml" ng-model="bpos">
+                        <label style="color:red" ng-show="ebpos">Invalid Value</label>
+                    </div>
+                    <div class="col-lg-3">
+                        B negative <label style="color:red">*</label>
+                        <input type="text" class="form-control required"  ng-blur="errbnev()" name="apos" placeholder="Amount in ml" ng-model="bnev">
+                        <label style="color:red" ng-show="ebnev">Invalid Value</label>
+                    </div>
+
+                </div>
+                <div class="col-lg-12"  style="padding: 5px;">
+                    <div class="col-lg-3">
+                        AB positive <label style="color:red">*</label>
+                        <input type="text" class="form-control required"  ng-blur="errabpos()" name="apos" placeholder="Amount in ml" ng-model="abpos">
+                        <label style="color:red" ng-show="eabpos">Invalid Value</label>
+
+                    </div>
+                    <div class="col-lg-3">
+                        AB negative <label style="color:red">*</label>
+                        <input type="text" class="form-control required"  ng-blur="errabnev()" name="apos" placeholder="Amount in ml" ng-model="abnev">
+                        <label style="color:red" ng-show="eabnev">Invalid Value</label>
+
+                    </div>
+                    <div class="col-lg-3">
+                        O positive <label style="color:red">*</label>
+                        <input type="text" class="form-control required"  ng-blur="erropos()" name="apos" placeholder="Amount in ml" ng-model="opos">
+                        <label style="color:red" ng-show="eopos">Invalid Value</label>
+
+                    </div>
+                    <div class="col-lg-3">
+                        O negative <label style="color:red">*</label>
+                        <input type="text" class="form-control required"  ng-blur="erronev()" name="apos" placeholder="Amount in ml" ng-model="onev">
+                        <label style="color:red" ng-show="eonev">Invalid Value</label>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-12" style="padding: 5px;margin: 5px;">
+                <div class="col col-lg-12" style="padding: 10px;margin: 10px;">
+                    <div class="col-lg-3">
+                        City   <label style="color:red">*</label>
+                        <input class="form-control required" type="text" name="city" placeholder="City" ng-model="city">
+                    </div>
+                    <div class="col-lg-3">
+                        State   <label style="color:red">*</label><br>
+                        <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+                            <select  style="width: 200px;height:30px;" class="input-md required" id="state" name="state"
+                                     ng-options="users.state_id as users.name for users in state" ng-change="findDistrict(stateId)"  ng-model="stateId">
+                                <option value="0" >Assigned</option>
+                            </select> 
+                        </label>
+                    </div>
+                    <div class="col-lg-3">
+                        District   <label style="color:red">*</label><br>
+                        <label class="select " style="width: 200px;float: left;margin-right: 4px;">
+                            <select  style="width: 200px;height:30px;" class="input-md required" id="bloodGroup" name="bloodGroup"
+                                     ng-options="users.district_id as users.district_name for users in district"   ng-model="districtId">
+                                <option value="0" >Assigned</option>
+                            </select> 
+                        </label>
+                    </div>
+                </div>
+                <div class="col col-lg-12" style="padding: 10px;margin: 10px;">
+                    <div class="col-lg-6"> 
+                        Mobile   <label style="color:red">*</label>
+                        <input class="form-control required" ng-blur="errmobile(mobile)" type="text" name="mobile" placeholder="Mobile Number" style="width: 70%" ng-model="mobile">
+                        <label style="color:red" ng-show="emobile">Invalid Mobile</label>
+                    </div>
+                    <div class="col-lg-6">	
+                        Email   <label style="color:red">*</label>
+                        <input class="form-control required" ng-blur="erremail(email)" type="text" name="mail" placeholder="e-mail" ng-model="email"><br>
+                        <label style="color:red" ng-show="eemail">Invalid Email</label>
+                    </div>
+                </div>
+            </div>
+            <div style="padding: 5px;">
+                <button style="margin-left:50%" class="btn btn-d" ng-click="register()"> Register</button>
+            </div>
+        </div>
+
+    </div>
+</div>
