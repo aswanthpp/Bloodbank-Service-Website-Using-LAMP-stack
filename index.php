@@ -2,6 +2,7 @@
 <html lang="en-us" data-ng-app="blankApp">
     <head>
         <meta charset="utf-8">
+        <link rel="shortcut icon" href="./img/logo.png" />
         <title>Blood Bank</title>
     </head>
     <body data-ng-controller="GlobalController">

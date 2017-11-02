@@ -1,25 +1,26 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 
 <!--<link rel="stylesheet" href="../css/bootstrap.min.css">
 <script src="../js/jquery-2.0.2.min.js"></script>
 <script src="../js/bootsrap/bootstrap.min.js"></script>-->
 <style>
     .redborder { border : 1px solid red !important;}
-    body{
-      
-        // background-image: url("../img/cover.png");
+   body{
+        // background-color: #E9C893;
+         //background-image: url("../img/hand.jpg");
     }
 </style>
 <div ng-controller="registerDonorController">
     <div class="row" id="logInDonor">
-        <div class="col col-lg-12" style="background-color: #d6d4d4;font-size: 120%">
+        <div class="col col-lg-12" style="background-color: red;color: white;font-size: 120%">
             <button class="w3-button w3-hover-blue"  ng-click="signin()"   >Sign In</button>
             <button class="w3-button w3-hover-blue"  ng-click="signup()"> Sign Up</button>
         </div>
         <div ng-show="loginForm"  class="col col-lg-12" style="padding: 30px;" >
-            <div class="col col-lg-12" style="padding:5px;margin:10px;font-size: 200%; text-align: center">Blood Donor Log In </div>
+            <div class="col col-lg-12" style="padding:5px;margin:10px;font-size: 200%; text-align: center">Sign In Donor </div>
             <div class="col-lg-12" style="padding:5px;margin:10px;font-size: 150%;">Sign In </div>
             <div  class="col-lg-6">
                 Username 
@@ -36,8 +37,8 @@
             <div class="col col-lg-12" style="padding-top: 2px;">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-3" style="text-align: center;padding-top: 5px;">
-                    <button  type="reset" class="btn btn-default" ng-click="donorLogin()">Log In</button>
-                    <button  ng-show="inLogin" type="reset" class="btn btn-default" ng-click="logOut()">Log Out</button>
+                    <button style="color: white;background-color: #3b5998" type="reset" class="btn btn-default" ng-click="donorLogin()">Log In</button>
+                    <button style="color: white;background-color: #3b5998" ng-show="inLogin" type="reset" class="btn btn-default" ng-click="logOut()">Log Out</button>
                 </div>
                 <div class="col-lg-3">
 
@@ -146,7 +147,7 @@
                 <div class="col-lg-12">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-3" style="text-align: center">
-                        <button type="reset" class="btn btn-default" ng-click="updateDonor()">Update</button>
+                        <button style="color: white;background-color: red" type="reset" class="btn btn-default" ng-click="updateDonor()">Update</button>
                     </div>
                     <div class="col-lg-3"></div>
                 </div>
@@ -154,7 +155,7 @@
         </div>
         <div id="registerDonor" ng-show="registerForm">
             <div class="col col-lg-12" style="padding:30px;">
-                <div class="col col-lg-12" style="padding:5px;margin:10px;font-size: 200%; text-align: center">Register Blood Donor </div>
+                <div class="col col-lg-12" style="padding:5px;margin:10px;font-size: 200%; text-align: center">Register Donor </div>
                 <div class="col-lg-12" style="padding:5px;margin:10px;font-size: 150%;">Sign Up </div>
                 <div class="col-lg-12" style="padding: 5px;margin: 5px;" >
 
@@ -188,7 +189,7 @@
                     </div>
                     <div  class="col-lg-4" >
                         Date of  Birth  <label style="color:red">*</label><br>
-                        <input class="form-control required" ng-blur="errdob()" type="date" id="dob" placeholder="DOB [dd/mm/yyyy]" ng-model="dob" >
+                        <input class="form-control required" ng-blur="errdob()" type="date" id="dob" placeholder=" yyyy/mm/dd " ng-model="dob" >
                         <label style="color:red" ng-show="edob">Invalid DOB</label>
                     </div>
                 </div>
@@ -205,7 +206,7 @@
                 </div>
                 <div class="col-lg-3">
                     Last Donated Date   <label style="color:red">*</label>
-                    <input type="date" id="ldate" class="form-control required" placeholder="Last Donated[dd/mm/yyyy]" ng-model="lastDate" >
+                    <input type="date" id="ldate" class="form-control required" placeholder=" yyyy/mm/dd " ng-model="lastDate" >
                 </div>
                 <div class="col-lg-3">
                     Height  <label style="color:red">*</label>
@@ -256,7 +257,7 @@
                     </div>
                 </div>
                 <div style="padding: 5px;">
-                    <button style="margin-left:50%" class="btn btn-d" ng-click="register()"> Register</button>
+                    <button style="color: white;background-color: red; margin-left:50%" class="btn btn-d" ng-click="register()"> Register</button>
                 </div>
             </div>
         </div>

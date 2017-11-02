@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
 
 <!--<link rel="stylesheet" href="./css/bootstrap.min.css">
 <script src="./js/jquery-2.0.2.min.js"></script>
@@ -8,17 +9,17 @@
 <style>
     .redborder { border : 1px solid red !important;}
     body{
-       // background-image: url("./img/cover3.jpg");
-        background-color: #A9A9A9;
+        background-image: url("./img/paper.jpg");
+       // background-color: #A9A9A9;
     }
 </style>
 <div ng-controller="requestStatusController" >
     <div class="row">
         <div class="col-lg-12" style="font-size: 250%;padding-top: 10px;text-align:center;color:">Blood Request History</div>
         <div class="col col-lg-12" style="padding: 10px;margin: 10px;">
-            <div class="col-lg-12" style="padding: 3px;;font-size: 150%">Search By</div>
+            <div class="col-lg-12" style="padding: 3px;;font-size: 150%"><b>Search By</b></div>
             <div class="col-lg-4">
-                Blood Group<br>
+                <b style="color: red">Blood Group</b><br>
                 <label class="select " style="width: 200px;float: left;margin-right: 4px; ">
                     <select  style="width: 200px;height:35px;" class="input-md required" id="bloodGroup" name="bloodGroup"
                              ng-options="users.bid as users.blood_group for users in bloodGroup"    ng-model="bloodGroupId">
@@ -27,7 +28,7 @@
                 </label>
             </div>
             <div class="col-lg-4">
-                State  <br>
+                <b style="color: red"> State </b> <br>
                 <label class="select " style="width: 200px;float: left;margin-right: 4px;">
                     <select  style="width: 200px;height: 35px" class="input-md required" id="state" name="state"
                              ng-options="users.state_id as users.name for users in state" ng-change="findDistrict(stateId)"  ng-model="stateId">
@@ -36,7 +37,7 @@
                 </label>
             </div>
             <div class="col-lg-4">
-                District<br>
+                <b style="color: red">  District</b><br>
                 <label class="select " style="width: 200px;float: left;margin-right: 4px;">
                     <select  style="width: 200px;height:35px;" class="input-md required" id="bloodGroup" name="bloodGroup"
                              ng-options="users.district_id as users.district_name for users in district" s  ng-model="districtId">
@@ -48,7 +49,7 @@
         <div class="col-lg-12" >
             <div class="col-lg-3"></div>
             <div class="col-lg-3">
-                <button style="margin-left:50%" class="btn btn-d" ng-click="search()"> Search</button>
+                <button style="margin-left:50%; background-color: red; color:wheat" class="btn btn-d" ng-click="search()"> Search</button>
             </div>
             <div class="col-lg-3"></div>
         </div>
@@ -64,6 +65,8 @@
                             <th  style="width: 80px">Blood Group</th>
                             <th style="width: 50px;">District</th>
                             <th  style="width: 150px">State</th>
+                            <th  style="width: 150px">Date</th>
+                            <th>Contact</th>
 
                         </tr>
                     </thead>
@@ -76,6 +79,8 @@
                             <td>{{donor.blood_group}}</td>
                             <td>{{donor.district}}</td>
                             <td>{{donor.state}}</td>
+                            <td>{{donor.req_date}}</td>
+                            <td>{{donor.mobile}}</td>
                             <!--<td> <button type="reset" class="btn btn-d"  style="background-color: #e2583f"ng-click="sendBank()">Send</button></td>-->
 
                         </tr>

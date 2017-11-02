@@ -59,6 +59,7 @@ class DbHandler {
                 ->where("blood_group = ?", $bgroup)
                 ->and("district = ?", $district)
                 ->and("state = ? ", $state);
+                //->and("last_donated_date < ?",CURRDATE()-31 );
         return $data;
     }
 
@@ -164,7 +165,7 @@ class DbHandler {
     }
     public function getContactBank($did){
         return $this->db->tbl_organization()
-                ->select('mobile','org_name')
+                ->select('mobile','org_name','manager_name')
                 ->where("org_id = ? ",$did);
     }
 

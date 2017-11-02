@@ -102,7 +102,8 @@ app.controller('homeController', function ($scope, $http, $window) {
                 "mobile": $scope.mobile,
                 "blood_group": $scope.bloodGroupId,
                 "district": $scope.districtId,
-                "state": $scope.stateId
+                "state": $scope.stateId,
+                "req_date":$scope.CDate
             };
             $http.put("api/insertRequestLog", $scope.Details).success(function (data) {
                 $scope.Status = data;
@@ -132,7 +133,7 @@ app.controller('homeController', function ($scope, $http, $window) {
         }
 
     };
-    $scope.sendDonor = function (data) {
+    $scope.sendDonor = function (data1) {
         $scope.Details = {
             "patient_name": $scope.pname,
             "hospital_name": $scope.hname,
@@ -141,16 +142,17 @@ app.controller('homeController', function ($scope, $http, $window) {
             "district": $scope.districtId,
             "state": $scope.stateId
         };
-        $http.put("api/sendAlertDonor/" + data, $scope.Details).success(function (data) {
-            alert("SMS sent");
+        $http.put("api/sendAlertDonor/" + data1, $scope.Details).success(function (data) {
+            $scope.Contact=data;
+            alert("Donor Name : "+$scope.Contact[0].name+"\nContact : "+$scope.Contact[0].mobile+"\n\nPlease Make A call to Notify the Donor");
         });
 
-        $http.get("api/updateLastDonatedDate/" + data + "/" + $scope.CDate).success(function () {
+        $http.get("api/updateLastDonatedDate/" + data1 + "/" + $scope.CDate).success(function () {
 
         });
 
     };
-    $scope.sendBank = function (data) {
+    $scope.sendBank = function (data1) {
         $scope.Details = {
             "patient_name": $scope.pname,
             "hospital_name": $scope.hname,
@@ -159,8 +161,9 @@ app.controller('homeController', function ($scope, $http, $window) {
             "district": $scope.districtId,
             "state": $scope.stateId
         };
-        $http.put("api/sendAlertBank/" + data , $scope.Details).success(function () {
-            alert("SMS sent to the Blood Bank");
+        $http.put("api/sendAlertBank/" + data1 , $scope.Details).success(function (data) {
+            $scope.ContactBank=data;
+            alert("Organization :"+$scope.ContactBank[0].org_name+"   Manager :"+$scope.ContactBank[0].manager_name+"\nContact :"+$scope.ContactBank[0].mobile+"\nPlease make call/SMS to Notify them");
         });
     };
     $scope.errmobile = function (mobile) {

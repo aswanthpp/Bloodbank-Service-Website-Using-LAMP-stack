@@ -5,10 +5,13 @@
         <group>
             <file>file:/C:/wamp64/www/bloodBank/views/home.html</file>
             <file>file:/C:/wamp64/www/bloodBank/views/status.html</file>
+            <file>file:/C:/wamp64/www/bloodBank/includes/header.php</file>
             <file>file:/C:/wamp64/www/bloodBank/api/index.php</file>
             <file>file:/C:/wamp64/www/bloodBank/js/ng/blankController.js</file>
             <file>file:/C:/wamp64/www/bloodBank/views/about.html</file>
             <file>file:/C:/wamp64/www/bloodBank/api/includes/DbHandler.php</file>
+            <file>file:/C:/wamp64/www/bloodBank/index.php</file>
+            <file>file:/C:/wamp64/www/bloodBank/views/organization.html</file>
             <file>file:/C:/wamp64/www/bloodBank/views/register.html</file>
         </group>
     </open-files>

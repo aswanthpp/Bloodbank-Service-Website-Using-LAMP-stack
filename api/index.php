@@ -161,7 +161,7 @@ $app->put("/sendAlertDonor/:did", function($did) use($app) {
     ///Sending Notification Part
   //  print_r(json_decode(json_encode($data)));
     $app->response()->header('Content-Type', 'application/json');
-    echo json_encode($data);
+    echo json_encode($contact);
 });
 $app->get("/bankLogin/:username/:password", function($username, $password) use($app) {
     $db = new DbHandler();
@@ -198,7 +198,7 @@ $app->put("/sendAlertBank/:did", function($did) use($app) {
     ///Sending Notification Part
    // print_r(json_decode(json_encode($data)));
     $app->response()->header('Content-Type', 'application/json');
-    echo json_encode($data);
+    echo json_encode($contact);
 });
 
 
