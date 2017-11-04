@@ -1,4 +1,4 @@
-# blood_bank service portal
+### Blood Bank Service Portal
 
 A web service Portal for blood bank Service as part of DBMS LAB(CO303) project
 Implemented using MySQL,PHP,JavaSceipt and HTML
