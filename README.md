@@ -1,20 +1,32 @@
-### Blood Bank Service Portal
+# Blood Bank Service Portal
 
-A web service Portal for blood bank Service as part of DBMS LAB(CO303) project
+A web service Portal for blood bank Service as part of DBMS LAB(CO303) project <br>
 Implemented using MySQL,PHP,JavaSceipt and HTML
 
+## Team : <br>
 
-Installation :<br>
+### Arvind Ramachandran 15CO111
+### Aswanth P P 15CO112
 
-	Windows : <br>
-	<code>
+## AIM 
+
+### Make blood donor available to the victims as faster<br>
+### Make a blood donation faster at easier by providing nearest donors and blooad bank to the victims can save life!!!
+
+
+## Installation :<br>
+
+### Windows :<br> 
+	
 		1. Download and Install WampServer
 		2. Download source code and Move the sourcecode to "C:\wamp64\www\"
 		3. Launch "localhost/phpmyadmin" in browser with username :"root" and password : ""  (Default)
 		4. Import db_bloodbank.sql to phpmyadmin 
 		5. Launch localhost/bloodbank
-	</code>
-	Ubuntu :<br>
+	
+	
+	
+### Ubuntu :<br>
 	
 1. Download and Install LAMP (https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04)
 <br>
@@ -22,14 +34,14 @@ Installation :<br>
 
 	
 	2.1. To put files in /var/www/html you need root permission. For that set the root password(if already not set):
-		sudo passwd root<br>
+		sudo passwd root
 
-		Now login as root:<br>
+		Now login as root:
 		su root
 
-		Give permission to the folder:<br>
+		Give permission to the folder:>
 		<code>sudo chmod 755 -R /var/www/html </code>
-               		or <br>
+               		or 
 		<code>sudo chmod 755 /var/www/html  </code>
 
 
@@ -37,7 +49,7 @@ Installation :<br>
 		cd /etc/apache2
 		nano apache2.conf
 		
-		Change the below code:<br>
+		Change the below code:
    		
 		<Directory /var/www/>
      		Options Indexes FollowSymLinks
@@ -67,21 +79,6 @@ Installation :<br>
 5. Launch "localhost/bloodbank" in broswer <br>
    
 
-   
-   
-   
-
-
-
-
-
-   </div>
-		
-
-Team :
-
-Arvind Ramachandran 15CO111
-Aswanth P P 15CO112
 
 
 
