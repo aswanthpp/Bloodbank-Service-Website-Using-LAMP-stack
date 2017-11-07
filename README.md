@@ -5,13 +5,13 @@ Implemented using MySQL,PHP,JavaSceipt and HTML
 
 ## Team : <br>
 
-### Arvind Ramachandran 15CO111
-### Aswanth P P 15CO112
+ Arvind Ramachandran 15CO111
+ Aswanth P P 15CO112
 
 ## AIM 
 
-### Make blood donor available to the victims as faster<br>
-### Make a blood donation faster at easier by providing nearest donors and blooad bank to the victims can save life!!!
+#### Make blood donor available to the victims as faster<br>
+#### Make a blood donation faster at easier by providing nearest donors and blooad bank to the victims can save life!!!
 
 
 ## Installation :<br>
