@@ -22,10 +22,10 @@ Installation :<br>
 
 	
 	2.1. To put files in /var/www/html you need root permission. For that set the root password(if already not set):
-		<code>sudo passwd root</code>
+		sudo passwd root<br>
 
 		Now login as root:<br>
-		<code>su root</code>
+		su root
 
 		Give permission to the folder:<br>
 		<code>sudo chmod 755 -R /var/www/html </code>
@@ -33,33 +33,33 @@ Installation :<br>
 		<code>sudo chmod 755 /var/www/html  </code>
 
 
-	2.2 	<code>su root
+	2.2 	su root
 		cd /etc/apache2
 		nano apache2.conf
-		</code>
+		
 		Change the below code:<br>
-   		<code>
+   		
 		<Directory /var/www/>
      		Options Indexes FollowSymLinks
      		AllowOverride None
      		Require all granted
 		</Directory>
-		</code>
+		
               	as:<br>
-		<code>
+		
 		<Directory /var/www/>
      		Options Indexes FollowSymLinks
      		AllowOverride All
      		Require all granted
 		</Directory>
-		</code>
+		
 
 
-	2.3. 	Enable rewrite mode: <br>
-		<code>sudo a2enmod rewrite</code>
+	2.3 	Enable rewrite mode: <br>
+		sudo a2enmod rewrite
 
 	2.4 	Restart apache server:<br>
-		<code>sudo service apache2 restart</code>
+		sudo service apache2 restart
 
 
 3  Download the sourcecode and move it to "/var/www/html/" <br>
