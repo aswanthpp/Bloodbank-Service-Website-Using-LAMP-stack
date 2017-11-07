@@ -11,7 +11,7 @@ Implemented using MySQL,PHP,JavaSceipt and HTML
 ## AIM:<br>
 
  Make blood donor available to the victims as faster<br>
-Make a blood donation faster at easier by providing nearest donors and blooad bank to the victims can save life!!!
+Make a blood donation faster and easier by providing nearest donors and blood bank to the victims to save life!!!
 
 
 ## Installation :<br>
