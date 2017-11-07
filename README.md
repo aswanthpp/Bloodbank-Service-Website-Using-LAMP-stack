@@ -3,65 +3,70 @@
 A web service Portal for blood bank Service as part of DBMS LAB(CO303) project
 Implemented using MySQL,PHP,JavaSceipt and HTML
 
+<div>
+Installation :<br>
 
-Installation :
 
-
-PreRequsites :
-	Windows : 
+PreRequsites :<br>
+	Windows : <br>
+	<code>
 		1. Download and Install WampServer
 		2. Download source code and Move the sourcecode to "C:\wamp64\www\"
 		3. Launch "localhost/phpmyadmin" in browser with username :"root" and password : ""  (Default)
 		4. Import db_bloodbank.sql to phpmyadmin 
 		5. Launch localhost/bloodbank
+	</code>
 	Ubuntu :
+	<div>
 1. Download and Install LAMP (https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04)
+</div>
+<div>
 2.After installing LAMP and phpMyAdmin in Ubuntu, do the following:
+</div>
+
 	<div>
 	2.1. To put files in /var/www/html you need root permission. For that set the root password(if already not set):
-		sudo passwd root
+		<code>sudo passwd root</code>
 
-		Now login as root:
-		2.1.1. su root
+		Now login as root:<br>
+		<code>su root</code>
 
-		Give permission to the folder:
-		2.1.2. sudo chmod 755 -R /var/www/html
-               		or
-		2.1.2. sudo chmod 755 /var/www/html
+		Give permission to the folder:<br>
+		<code>sudo chmod 755 -R /var/www/html </code>
+               		or <br>
+		<code>sudo chmod 755 /var/www/html  </code>
 
 </div>
 <div>
-	2.2 	
-		2.2.1. su root
-		2.2.2. cd /etc/apache2
-		2.2.3. nano apache2.conf
-<br>
-		Change the below code:
-   <br>
-		 <Directory /var/www/>
+	2.2 	<code>su root
+		cd /etc/apache2
+		nano apache2.conf
+		</code>
+		Change the below code:<br>
+   		<code>
+		<Directory /var/www/>
      		Options Indexes FollowSymLinks
      		AllowOverride None
      		Require all granted
 		</Directory>
-		<br>
-
-              	as:
-<br>
+		</code>
+              	as:<br>
+		<code>
 		<Directory /var/www/>
      		Options Indexes FollowSymLinks
      		AllowOverride All
      		Require all granted
 		</Directory>
-		<br>
+		</code>
 </div>
 <div>
 
 	2.3. 	Enable rewrite mode:
-		2.3.1.  sudo a2enmod rewrite
+		sudo a2enmod rewrite
 </div>
 <div>
 	2.4 	Restart apache server:
-		2.4.1 sudo service apache2 restart
+		sudo service apache2 restart
 </div>
 
 
@@ -78,7 +83,7 @@ PreRequsites :
 
 
 
-   
+   </div>
 		
 
 Team :
