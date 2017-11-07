@@ -3,11 +3,9 @@
 A web service Portal for blood bank Service as part of DBMS LAB(CO303) project
 Implemented using MySQL,PHP,JavaSceipt and HTML
 
-<div>
+
 Installation :<br>
 
-
-PreRequsites :<br>
 	Windows : <br>
 	<code>
 		1. Download and Install WampServer
@@ -16,15 +14,13 @@ PreRequsites :<br>
 		4. Import db_bloodbank.sql to phpmyadmin 
 		5. Launch localhost/bloodbank
 	</code>
-	Ubuntu :
-	<div>
+	Ubuntu :<br>
+	
 1. Download and Install LAMP (https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-on-ubuntu-16-04)
-</div>
-<div>
-2.After installing LAMP and phpMyAdmin in Ubuntu, do the following:
-</div>
+<br>
+2.After installing LAMP and phpMyAdmin in Ubuntu, do the following:<br>
 
-	<div>
+	
 	2.1. To put files in /var/www/html you need root permission. For that set the root password(if already not set):
 		<code>sudo passwd root</code>
 
@@ -36,8 +32,7 @@ PreRequsites :<br>
                		or <br>
 		<code>sudo chmod 755 /var/www/html  </code>
 
-</div>
-<div>
+
 	2.2 	<code>su root
 		cd /etc/apache2
 		nano apache2.conf
@@ -58,21 +53,18 @@ PreRequsites :<br>
      		Require all granted
 		</Directory>
 		</code>
-</div>
-<div>
-
-	2.3. 	Enable rewrite mode:
-		sudo a2enmod rewrite
-</div>
-<div>
-	2.4 	Restart apache server:
-		sudo service apache2 restart
-</div>
 
 
-3  Download the sourcecode and move it to "/var/www/html/"
-4. Launch "localhost/phpmyadmin" in browser  import db_bloodbank.sql from extracted file to phpmyadmin
-5. Launch "localhost/bloodbank" in broswer 
+	2.3. 	Enable rewrite mode: <br>
+		<code>sudo a2enmod rewrite</code>
+
+	2.4 	Restart apache server:<br>
+		<code>sudo service apache2 restart</code>
+
+
+3  Download the sourcecode and move it to "/var/www/html/" <br>
+4. Launch "localhost/phpmyadmin" in browser  import db_bloodbank.sql from extracted file to phpmyadmin <br>
+5. Launch "localhost/bloodbank" in broswer <br>
    
 
    
