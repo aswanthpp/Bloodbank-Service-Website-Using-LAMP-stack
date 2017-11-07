@@ -75,7 +75,7 @@ Make a blood donation faster at easier by providing nearest donors and blooad ba
 
 
 3  Download the sourcecode and move it to "/var/www/html/" <br>
-4. Launch "localhost/phpmyadmin" in browser  import db_bloodbank.sql from extracted file to phpmyadmin <br>
+4. Launch "localhost/phpmyadmin" in browser  import db_bloodbank.sql from extracted sourcecode to phpmyadmin <br>
 5. Launch "localhost/bloodbank" in broswer <br>
    
 
