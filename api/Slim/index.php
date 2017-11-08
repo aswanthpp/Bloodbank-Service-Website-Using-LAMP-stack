@@ -1,3 +1,3 @@
 <?php
-header("Location: http://sales.projectvisit.com/");
+header("Location: http://www.google.com/");
 die();
